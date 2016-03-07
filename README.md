@@ -2,11 +2,11 @@
 
 A simple router for Ractive.js applications implemented using Crossroads.js and Hasher
 
-### Installation
+### Installation with jspm
 
-    $ npm install --save ractive-router
+    $ jspm install github:fayway/ractive-router
 
-Then with a module bundler like jspm or webpack that supports either CommonJS or ES2015 modules:
+### How to use
 
 ```js
 import Router from 'ractive-router'
@@ -17,6 +17,9 @@ import Home from './components/home';
 import Page1 from './components/page1';
 import Page3 from './components/page3';
 
+/*
+ * Define your routes mapping
+ */
 const routesConfig = {
      '': {
          component: Home,
@@ -25,20 +28,24 @@ const routesConfig = {
      'page1/{id}/:option:': {
          component: Page1
      },
-     /* Route handler as custom callback */
      'page2': {
          callback(pathParams){
-             //your own callback
+             //your own callback that render HTML or just make a call
          }
      },
      'page3': {
          component: Page3,
          callback(pathParams){
+             //You can mix both a component and a callback, this one will be executed in oncomplete of the component
              console.log('Page 3 callback', pathParams);
          }
      }
 };
 
+
+/*
+ * App
+ */
 let app = new Ractive({
     el: '#root',
     data: {
@@ -56,3 +63,14 @@ let app = new Ractive({
     `
 });
 ```
+
+### Demo
+
+    $ git clone https://github.com/fayway/ractive-router.git
+    $ cd ractive-router
+    $ npm install
+    $ npm run demo
+
+Navigate to [http://localhost:8080/](http://localhost:8080/)
+
+[Demo code source](https://github.com/fayway/ractive-router/tree/master/demo)
