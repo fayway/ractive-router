@@ -4,12 +4,13 @@ import Footer from './components/footer.js';
 import routesConfig from './routes';
 import Router from '../src/ractive-router';
 
+//Root App
 new Ractive({
     el: '#root',
     data: {
         routesConfig,
         globals: {
-            app: 'Demo'
+            app: 'Demo' //Routes components can access globals data via ractive.get('parentGlobals') or {{parentGlobals}}
         }
     },
     components: {

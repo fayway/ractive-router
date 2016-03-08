@@ -13,8 +13,10 @@
         oninit: function oninit() {
             var _this = this;
 
-            this.routesConfig = this.get('config');
             this.routes = [];
+            this.currentComponent = undefined;
+
+            this.routesConfig = this.get('routesConfig');
             Object.keys(this.routesConfig).map(function (pattern) {
                 var routeConfig = _this.routesConfig[pattern];
                 var routeObject = crossroads.addRoute(pattern, function () {
@@ -30,10 +32,11 @@
                     var callback = routeConfig.callback instanceof Function ? routeConfig.callback : undefined;
                     var component = routeConfig.component;
                     if (component) {
-                        new component({
+                        this.currentComponent = new component({
                             el: container,
                             data: {
-                                pathParams: pathParams
+                                pathParams: pathParams,
+                                parentGlobals: this.get('globals')
                             },
                             oncomplete: function oncomplete() {
                                 if (callback) callback(pathParams);
@@ -44,6 +47,12 @@
                     }
                 }.bind(_this));
                 _this.routes.push(routeObject);
+            });
+            //
+            this.observe('globals', function (globals) {
+                if (this.currentComponent && this.currentComponent.update) {
+                    this.currentComponent.update('parentGlobals');
+                }
             });
             //
             crossroads.bypassed.add(function () {

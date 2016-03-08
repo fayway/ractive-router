@@ -1,7 +1,7 @@
 {
   "name": "ractive-router",
-  "version": "0.0.1",
-  "description": "A Simple Router for Ractive.js",
+  "version": "0.0.2",
+  "description": "A Simple Router for Ractive.js applications built on top of Crossroads.js and Hasher",
   "author": {
     "name": "Fayçal Tirich"
   },
@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://fayway@bitbucket.org/fayway/ractive-router.git"
+    "url": "git+https://github.com/fayway/ractive-router.git"
   },
   "devDependencies": {
     "babel": "^6.5.2",
@@ -36,5 +36,12 @@
     "crossroads": "^0.12.2",
     "hasher": "^1.2.0"
   },
+  "keywords": [
+    "ractive",
+    "router",
+    "crossroads",
+    "hasher",
+    "es2015"
+  ],
   "license": "MIT"
 }
