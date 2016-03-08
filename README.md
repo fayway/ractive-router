@@ -1,6 +1,6 @@
 ### Introduction
 
-A simple router for Ractive.js applications implemented using Crossroads.js and Hasher
+A simple router for Ractive.js applications built on top of [Crossroads.js](https://millermedeiros.github.io/crossroads.js/) and [Hasher](https://github.com/millermedeiros/Hasher)
 
 ### Installation with jspm
 
@@ -44,7 +44,7 @@ const routesConfig = {
 
 
 /*
- * App
+ * Root App
  */
 let app = new Ractive({
     el: '#root',
