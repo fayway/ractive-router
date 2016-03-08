@@ -36,7 +36,7 @@ const routesConfig = {
      'page3': {
          component: Page3,
          callback(pathParams){
-             //You can defin a component and a callback for the same route, this callback will be executed in the oncomplete lifecycle event of the component
+             //You can define a component and a callback for the same route, the callback will be executed in the oncomplete lifecycle event of the component
          }
      }
 };
