@@ -4,7 +4,7 @@ A simple router for Ractive.js applications built on top of [Crossroads.js](http
 
 ### Installation with jspm
 
-    $ jspm install github:fayway/ractive-router
+    $ jspm install ractive-router=github:fayway/ractive-router
 
 ### How to use
 
