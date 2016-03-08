@@ -7,7 +7,10 @@ import Router from '../src/ractive-router';
 new Ractive({
     el: '#root',
     data: {
-        routesConfig
+        routesConfig,
+        globals: {
+            app: 'Demo'
+        }
     },
     components: {
         Menu,
@@ -18,7 +21,7 @@ new Ractive({
         <div>
             <Menu />
             <div class="container">
-                <Router config={{routesConfig}} />
+                <Router routesConfig={{routesConfig}} />
             </div>
             <Footer />
         </div>

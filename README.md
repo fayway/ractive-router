@@ -58,7 +58,7 @@ let app = new Ractive({
     },
     template: `
         <Menu />
-        <Router config={{routesConfig}} />
+        <Router routesConfig={{routesConfig}} />
         <Footer />
     `
 });

@@ -7,8 +7,10 @@ export default Ractive.extend({
         <main class="routeContainer"></main>
     `,
     oninit () {
-        this.routesConfig = this.get('config');
         this.routes = [];
+        this.currentComponent = undefined;
+
+        this.routesConfig = this.get('routesConfig');
         Object.keys(this.routesConfig).map((pattern) => {
             let routeConfig = this.routesConfig[pattern];
             let routeObject = crossroads.addRoute(pattern, function () {
@@ -24,10 +26,11 @@ export default Ractive.extend({
                 let callback = routeConfig.callback instanceof Function ? routeConfig.callback : undefined;
                 let component = routeConfig.component;
                 if (component) {
-                    new component({
+                    this.currentComponent = new component({
                         el: container,
                         data: {
-                            pathParams
+                            pathParams,
+                            parentGlobals: this.get('globals')
                         },
                         oncomplete () {
                             if (callback) callback(pathParams);
@@ -40,7 +43,13 @@ export default Ractive.extend({
             this.routes.push(routeObject);
         });
         //
-        crossroads.bypassed.add(function(){
+        this.observe('globals', function (globals) {
+            if (this.currentComponent && this.currentComponent.update) {
+                this.currentComponent.update('parentGlobals');
+            }
+        });
+        //
+        crossroads.bypassed.add(function () {
             hasher.replaceHash('404');
         });
     },
