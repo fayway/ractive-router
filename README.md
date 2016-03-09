@@ -1,6 +1,6 @@
 ### Introduction
 
-A simple router for Ractive.js applications built on top of [Crossroads.js](https://millermedeiros.github.io/crossroads.js/) and [Hasher](https://github.com/millermedeiros/Hasher)
+A simple router for [Ractive.js](http://www.ractivejs.org/) applications built on top of [Crossroads.js](https://millermedeiros.github.io/crossroads.js/) and [Hasher](https://github.com/millermedeiros/Hasher)
 
 ### Installation with jspm
 
