@@ -1,5 +1,5 @@
 {
-  "name": "ractive-router",
+  "name": "ractivejs-router",
   "version": "0.0.2",
   "description": "A Simple Router for Ractive.js applications built on top of Crossroads.js and Hasher",
   "author": {
