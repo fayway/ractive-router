@@ -20,7 +20,7 @@ export default {
             console.log('Page 2 callback', pathParams);
         }
     },
-    /* You can defin both a Ractive Component and a callback as a Route handler, the callback will be executed during the Component oncomplete */
+    /* You can define both a Ractive Component and a callback as a Route handlers, the callback will be executed during the Component oncomplete lifecycle event*/
     'page3': {
         component: Page3,
         callback(pathParams){
