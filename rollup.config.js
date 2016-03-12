@@ -8,6 +8,6 @@ export default {
             babelrc: false
         })
     ],
-    moduleName: 'Ractive.router',
+    moduleName: 'RactiveRouter',
     sourceMap: true
 };

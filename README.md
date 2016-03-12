@@ -29,13 +29,13 @@ const routesConfig = {
          component: Page1
      },
      'page2': {
-         callback(pathParams){
+         callback(routeParams){
              //Your own callback that render HTML or just make an async call
          }
      },
      'page3': {
          component: Page3,
-         callback(pathParams){
+         callback(routeParams){
              //You can define a component and a callback for the same route, the callback will be executed in the oncomplete lifecycle event of the component
          }
      }

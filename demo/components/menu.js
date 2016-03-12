@@ -10,5 +10,11 @@ export default Ractive.extend({
                 <li role="presentation"><a href="#page3">Page 3</a></li>
             </ul>
         </header>
-    `
+    `,
+    oninit() {
+        console.log('Menu init');
+    },
+    onteardown() {
+        console.log('Menu teardown');
+    }
 });

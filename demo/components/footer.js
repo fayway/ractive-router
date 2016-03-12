@@ -6,5 +6,11 @@ export default Ractive.extend({
             <hr />
             <div>Footer</div>
         </footer>
-    `
+    `,
+    oninit() {
+        console.log('Footer init');
+    },
+    onteardown() {
+        console.log('Footer teardown');
+    }
 });
