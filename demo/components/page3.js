@@ -2,8 +2,8 @@ import Ractive from 'ractive';
 
 export default Ractive.extend({
     template: `
-        <h1>Page 3</h1>
-        <div>
+        <h1 class="page3">Page 3</h1>
+        <div class="page3">
             <div>App: {{parentGlobals.app}}</div>
         </div>
     `,

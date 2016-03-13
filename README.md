@@ -73,3 +73,9 @@ let app = new Ractive({
 Navigate to [http://localhost:8080/](http://localhost:8080/)
 
 [Demo code source](https://github.com/fayway/ractive-router/tree/master/demo)
+
+### Tests
+
+    $ npm test
+
+![](http://i.imgur.com/PqIOCFn.png)
