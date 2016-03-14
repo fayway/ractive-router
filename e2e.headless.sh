@@ -1,3 +1,6 @@
+/usr/bin/Xvfb :99 -ac -screen 0 1280x1024x8 &
+export DISPLAY=:99
+
 PORT=8082
 
 ./node_modules/.bin/webpack-dev-server \
@@ -11,3 +14,5 @@ PORT=$PORT ./node_modules/.bin/nightwatch \
   -c nightwatch.json \
   -e firefox \
   && kill $! || (kill $! && exit 1)
+
+pkill Xvfb
