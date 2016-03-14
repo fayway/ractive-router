@@ -12,6 +12,7 @@
     "build:es": "rollup -c -f es6 -o dist/ractive-router.es.js",
     "prepublish": "npm run build",
     "test": "bash e2e.sh",
+    "test-headless": "bash e2e.headless.sh",
     "demo": "webpack-dev-server --inline --hot --config demo/webpack.config.js --content-base demo --history-api-fallback --host 0.0.0.0"
   },
   "repository": {
