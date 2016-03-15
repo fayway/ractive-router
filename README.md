@@ -4,6 +4,10 @@ A simple router for [Ractive.js](http://www.ractivejs.org/) applications built o
 
 ### Installation with jspm
 
+    $ npm i ractivejs-router --save
+
+Installation with jspm
+
     $ jspm install ractive-router=github:fayway/ractive-router
 
 ### How to use
@@ -29,13 +33,13 @@ const routesConfig = {
          component: Page1
      },
      'page2': {
-         callback(routeParams){
+         callback(routeParams) {
              //Your own callback that render HTML or just make an async call
          }
      },
-     'page3': {
+     'page3:?query:': {
          component: Page3,
-         callback(routeParams){
+         callback(routeParams) {
              //You can define a component and a callback for the same route, the callback will be executed in the oncomplete lifecycle event of the component
          }
      }
@@ -61,6 +65,50 @@ let app = new Ractive({
         <Footer />
     `
 });
+```
+
+### Routes
+
+#### Path Params
+
+- **/{foo}/{bar}** will match **lorem/ipsum-dolor**
+- **/foo/{id}/:slug:** will match **/foo/123/bar** and **/foo/45**, (slug is optional)
+
+#### Query Strings
+
+- **/foo{?query}** will match **/foo?lorem=ipsum&dolor=amet**
+
+#### Using Routes Params inside Ractive Components
+
+Both Path and Query params are available inside Router Ractive components via the data object **routeParams**:
+
+Inside JS components:
+```js
+Ractive.extend({
+    oninit()  {
+        let routeParams = this.get('routeParams');
+        //Do Something with routeParams
+    }
+});
+```
+
+Or directly inside templates:
+```js
+<div>A paramName: {{routeParams.paramName}}</div>
+```
+
+### Navigation
+
+The Router provide two navigatoin methods:
+
+```js
+import Router from 'ractive-router'
+
+//Programatically navigate to a new route
+Router.go(hash);
+
+//Similar to Router.go(hash), but doesn't create a new record in browser history.
+Router.replace(hash);
 ```
 
 ### Demo

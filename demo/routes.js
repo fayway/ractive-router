@@ -1,6 +1,7 @@
 import Home from './components/home';
 import Page1 from './components/page1';
 import Page3 from './components/page3';
+import Page4 from './components/page4';
 import NotFound from './components/404'
 
 export default {
@@ -21,10 +22,16 @@ export default {
         }
     },
     /* You can define both a Ractive Component and a callback as a Route handlers, the callback will be executed during the Component oncomplete lifecycle event*/
-    'page3': {
+    'page3:?query:': {
         component: Page3,
         callback(pathParams){
             console.log('Page 3 callback', pathParams);
+        }
+    },
+    'page4/{id}/:option::?query:': {
+        component: Page4,
+            callback(pathParams){
+            console.log('Page 4 callback', pathParams);
         }
     },
     /* Not found Route must be set as 404 */

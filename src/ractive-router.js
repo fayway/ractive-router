@@ -73,10 +73,16 @@ let RactiveRouter = Ractive.extend({
         }
     },
     buildRouteParams (routePattern, values) {
-        //Todo: Support Query Params here ?
         let routeParamNames = crossroads.patternLexer.getParamIds(routePattern);
         let result = routeParamNames.reduce((result, field, index) => {
-            result[field] = values[index] || undefined;
+            let value = values[index];
+            if (typeof values[index] !== 'object') {
+                result[field] = values[index] || undefined;
+            } else {
+                Object.keys(value).map((key) => {
+                    result[key] = value[key];
+                });
+            }
             return result;
         }, {});
         return result;
@@ -90,5 +96,15 @@ let RactiveRouter = Ractive.extend({
         }
     }
 });
+
+//Programatically navigate to a new route
+RactiveRouter.go = (hash) => {
+    hasher.setHash(hash);
+}
+
+//Similar to Router.go(hash), but doesn't create a new record in browser history.
+RactiveRouter.replace = (hash) => {
+    hasher.replaceHash(hash);
+}
 
 export default RactiveRouter;

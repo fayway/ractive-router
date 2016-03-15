@@ -5,6 +5,14 @@ export default Ractive.extend({
         <h1 class="home">Home</h1>
         <div class="home">
             <div>App: {{parentGlobals.app}}</div>
+            <div>
+                <h3>routeParams</h3>
+                <ul>
+                {{#each routeParams}}
+                <li>{{.}}</li>
+                {{/each}}
+                </ul>
+            </div>
         </div>
     `,
     oninit() {
