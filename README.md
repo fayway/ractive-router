@@ -2,7 +2,7 @@
 
 A simple router for [Ractive.js](http://www.ractivejs.org/) applications built on top of [Crossroads.js](https://millermedeiros.github.io/crossroads.js/) and [Hasher](https://github.com/millermedeiros/Hasher)
 
-### Installation with jspm
+### Installation
 
     $ npm i ractivejs-router --save
 
@@ -13,13 +13,13 @@ Installation with jspm
 ### How to use
 
 ```js
-import Router from 'ractive-router'
+import Router   from 'ractive-router'
 
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import Home from './components/home';
-import Page1 from './components/page1';
-import Page3 from './components/page3';
+import Navbar   from './components/Navbar';
+import Footer   from './components/Footer';
+import Home     from './components/home';
+import Page1    from './components/page1';
+import Page3    from './components/page3';
 
 /*
  * Define your routes mapping
