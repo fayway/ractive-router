@@ -8,6 +8,14 @@
     hasher = 'default' in hasher ? hasher['default'] : hasher;
     crossroads = 'default' in crossroads ? crossroads['default'] : crossroads;
 
+    var babelHelpers = {};
+    babelHelpers.typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+      return typeof obj;
+    } : function (obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj;
+    };
+    babelHelpers;
+
     var RactiveRouter = Ractive.extend({
         template: '<main class="routeContainer"></main>',
         oninit: function oninit() {
@@ -81,10 +89,16 @@
             }
         },
         buildRouteParams: function buildRouteParams(routePattern, values) {
-            //Todo: Support Query Params here ?
             var routeParamNames = crossroads.patternLexer.getParamIds(routePattern);
             var result = routeParamNames.reduce(function (result, field, index) {
-                result[field] = values[index] || undefined;
+                var value = values[index];
+                if (babelHelpers.typeof(values[index]) !== 'object') {
+                    result[field] = values[index] || undefined;
+                } else {
+                    Object.keys(value).map(function (key) {
+                        result[key] = value[key];
+                    });
+                }
                 return result;
             }, {});
             return result;
@@ -100,6 +114,16 @@
             }
         }
     });
+
+    //Programatically navigate to a new route
+    RactiveRouter.go = function (hash) {
+        hasher.setHash(hash);
+    };
+
+    //Similar to Router.go(hash), but doesn't create a new record in browser history.
+    RactiveRouter.replace = function (hash) {
+        hasher.replaceHash(hash);
+    };
 
     return RactiveRouter;
 
